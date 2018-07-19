@@ -1,0 +1,80 @@
+{% extends 'auth/layout.html.twig' %}
+
+{% block style %}
+    <style>
+        .page-login {
+            background-image: url("{{ asset('material-dashboard/img/login.jpg') }}");
+            background-size: cover;
+            background-position: top center;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="page-header login-page header-filter page-login" filter-color="black">
+        <!--   you can change the color of the filter page using: data-color="black | blue | purple | green | orange | red | rose " -->
+        <div class="container">
+            <div class="col-lg-4 col-md-6 col-sm-6 ml-auto mr-auto">
+                <form class="form" action="{{ path('security_login_check') }}" method="post">
+                    <div class="card card-login card-hidden">
+                        <div class="card-header card-header-rose text-center">
+                            <h4 class="card-title">
+                                <img src="{{ asset('material-dashboard/img/formula.png') }}" alt="" width="55%">
+                            </h4>
+                        </div>
+                        <div class="card-body ">
+                            <p class="card-description text-center text-danger">
+                                &nbsp;
+                                {% if error %}
+                                    {{ error.messageKey|trans(error.messageData, 'form_messages') }}
+                                {% endif %}
+                            </p>
+                            <span class="bmd-form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">email</i>
+                                        </span>
+                                    </div>
+                                    <input type="email" id="username" name="_email" value="{{ last_username }}"
+                                           class="form-control" placeholder="Email...">
+                                </div>
+                            </span>
+                            <span class="bmd-form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">lock_outline</i>
+                                        </span>
+                                    </div>
+                                    <input type="password" id="password" name="_password"
+                                           class="form-control" placeholder="Senha...">
+                                </div>
+                            </span>
+                        </div>
+                        <div class="card-footer justify-content-center">
+                            <button type="submit" class="btn btn-rose btn-link btn-lg">Entrar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        {% include('auth/footer.html.twig') %}
+
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $(document).ready(function(){
+            demo.checkFullPageBackgroundImage();
+            setTimeout(function() {
+                $('.card').removeClass('card-hidden');
+            }, 500);
+        });
+
+        applyBackgroundColor();
+
+    </script>
+{% endblock %}

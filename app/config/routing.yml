@@ -1,0 +1,8 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+public_access:
+    resource: '@AppBundle/Controller/PublicAccess'
+    type: annotation
+    prefix: /public
