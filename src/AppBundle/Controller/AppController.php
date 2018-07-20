@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Menu\Menu;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -11,23 +12,28 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
  */
 class AppController extends Controller
 {
-    // TODO: pegar do BD
     /**
-     * @Route("/auth_color", name="auth_color")
+     * @Route("/menu", name="app_menu")
      */
-    public function authColorAction()
+    public function menuAction()
     {
-        return $this->json(['color' => 'green']);
+        $items = Menu::getMenuMapping($this->getUser()->getRole());
+
+        return $this->render('template/menuContent.html.twig', [
+            'items' => $items
+        ]);
     }
 
-//    /**
-//     * @Route("/menu_color", name="menu_color")
-//     */
-//    public function menuColorAction()
-//    {
-//        return $this->json([
-//            'color' => 'green',
-//            'background' => 'red'
-//        ]);
-//    }
+
+
+
+
+    // TODO: rota de teste
+    /**
+     * @Route("/teste", name="rota_teste")
+     */
+    public function showAction()
+    {
+        return $this->render('dashboard/index.html.twig');
+    }
 }
