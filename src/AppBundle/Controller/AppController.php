@@ -34,6 +34,6 @@ class AppController extends Controller
      */
     public function showAction()
     {
-        return $this->render('dashboard/index.html.twig');
+        return $this->render('formulator/index.html.twig');
     }
 }
