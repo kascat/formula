@@ -1,0 +1,45 @@
+#services:
+#    _defaults:
+#        autowire: true
+#        autoconfigure: true
+#        public: false
+#
+#    Coupon\:
+#        resource: '../../*'
+#        exclude: '../../{Entity,Manager,Repository}'
+#
+#    # Managers
+#
+#    coupon_manager:
+#        alias: Coupon\Manager\CouponManager
+#        public: true
+#
+#    Coupon\Manager\CouponManager:
+#        class: Coupon\Manager\CouponManager
+#        arguments: ['Coupon\Entity\Coupon', '@doctrine']
+#
+#    # Services
+#
+#    common.coupon_transformer:
+#        alias: Coupon\Service\Common\CouponTransformer
+#        public: true
+#
+#    Coupon\Service\Common\CouponTransformer:
+#        class: Coupon\Service\Common\CouponTransformer
+#        arguments: ['@coupon_manager']
+#
+#    sices.coupon_service:
+#        alias: Coupon\Service\Sices\CouponService
+#        public: true
+#
+#    Coupon\Service\Sices\CouponService:
+#        class: Coupon\Service\Sices\CouponService
+#        arguments: ['@coupon_manager', '@customer_manager', '@common.coupon_transformer', '@knp_paginator']
+#
+#    integrador.coupon_service:
+#        alias: Coupon\Service\Integrador\CouponService
+#        public: true
+#
+#    Coupon\Service\Integrador\CouponService:
+#        class: Coupon\Service\Integrador\CouponService
+#        arguments: ['@coupon_manager']

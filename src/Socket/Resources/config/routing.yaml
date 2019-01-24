@@ -1,0 +1,4 @@
+socket:
+    resource: "@SocketBundle/Action/Chat"
+    type: annotation
+    prefix: /chat
