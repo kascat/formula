@@ -1,8 +1,11 @@
 app:
-    resource: '@AppBundle/Controller/'
+    resource: "@AppBundle/Controller/"
     type: annotation
 
 public_access:
-    resource: '@AppBundle/Controller/PublicAccess'
+    resource: "@AppBundle/Controller/PublicAccess"
     type: annotation
     prefix: /public
+
+socket:
+    resource: "@SocketBundle/Resources/config/routing.yaml"
